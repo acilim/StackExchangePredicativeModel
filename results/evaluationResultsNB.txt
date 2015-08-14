@@ -1,0 +1,48 @@
+===TRAINING DATA==
+
+Correctly Classified Instances         663               82.875  %
+Incorrectly Classified Instances       137               17.125  %
+Kappa statistic                          0.6575
+Mean absolute error                      0.1842
+Root mean squared error                  0.3617
+Relative absolute error                 36.8311 %
+Root relative squared error             72.3328 %
+Total Number of Instances              800     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.835     0.178      0.825     0.835     0.83       0.918    closed
+                 0.823     0.165      0.833     0.823     0.828      0.918    not_closed
+Weighted Avg.    0.829     0.171      0.829     0.829     0.829      0.918
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 334  66 |   a = closed
+  71 329 |   b = not_closed
+
+
+===TEST DATA===
+
+Correctly Classified Instances         154               77      %
+Incorrectly Classified Instances        46               23      %
+Kappa statistic                          0.54  
+Mean absolute error                      0.2526
+Root mean squared error                  0.442 
+Relative absolute error                 50.5278 %
+Root relative squared error             88.3903 %
+Total Number of Instances              200     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.74      0.2        0.787     0.74      0.763      0.855    closed
+                 0.8       0.26       0.755     0.8       0.777      0.855    not_closed
+Weighted Avg.    0.77      0.23       0.771     0.77      0.77       0.855
+
+=== Confusion Matrix ===
+
+  a  b   <-- classified as
+ 74 26 |  a = closed
+ 20 80 |  b = not_closed
