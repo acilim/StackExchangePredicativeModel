@@ -89,7 +89,7 @@ The next step included creating the dataset from collected questions using weka 
 4. Applying machine learning techniques for classification
 =======================
 
-The dataset was first loaded from the .arff file, and since it contained numeric attributes it needed to be discretized. This was done using the weka [Discretize](http://weka.sourceforge.net/doc.dev/weka/filters/supervised/attribute/Discretize.html) filter. After that the FilteredClassifier was build with Discretize filter and the classifier. Three classifiers were used for classification:
+The dataset was first loaded from the .arff file, and since it contained numeric attributes it needed to be discretized. This was done using the weka [Discretize](http://weka.sourceforge.net/doc.dev/weka/filters/supervised/attribute/Discretize.html) filter. After that the FilteredClassifier was built with Discretize filter and one of the classifiers classifier. Three classifiers were used for classification:
 
 * [NaiveBayes](http://weka.sourceforge.net/doc.dev/weka/classifiers/bayes/NaiveBayes.html)
 * [Support Vector Machines](http://weka.sourceforge.net/doc.dev/weka/classifiers/functions/SMO.html)
@@ -141,7 +141,7 @@ Confusion matrix:
 |82 | 18 |  a (closed) |
 |17 | 83 |  b (not_closed) |
 
-As one can notice, the Logistic Regression classifier had the best results on training data, with 100% correctly classified instances. On the test dataset, Support Vector Machines was the best with 86.5 % corectly classified instances. 
+Logistic Regression classifier had the best results on training data, with 100% correctly classified instances. On the test dataset, Support Vector Machines was the best with 86.5 % corectly classified instances. 
 
 6. Technical realisation
 =============================
