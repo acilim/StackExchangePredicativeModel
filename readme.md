@@ -17,7 +17,7 @@ The project workflow consisted of the following steps:
   2. Processing collected data and adding features for classification
   3. Creating the dataset
   4. Applying machine learning techniques for classification
-  5.  Evaluating the classification results
+  5.  Evaluating classification results
 
 1. Collecting data
 ==========
@@ -29,7 +29,7 @@ The project workflow consisted of the following steps:
 * *filter*: withBody, in order to get bodies of the questions
 * *accessToken* and *key* obtained by registering to the api, in order to increase the daily request quota.
 
-The results were saved to files closedQuestions.json and notClosedQuestions.json.
+The results were saved to files [closedQuestions.json](StackExchangePredicativeModel/data/closedQuestions.json) and [notClosedQuestions.json](https://github.com/acilim/StackExchangePredicativeModel/blob/master/data/notClosedQuestions.json).
 
 2. Adding features
 ============ 
@@ -42,31 +42,31 @@ In the next step, each question was added features for classification. The featu
 | **C**  | Question Content  | *number_of_urls*, *number_of_stackoverflow_urls*|
 | **D** | Textual Style| *title_length*, *body_length*, *number_of_tags*, *number_of_punctuation_marks*, *number_of_short_words*, *number_of_special_characters*, *number_of_lower_case_characters*, *number_of_upper_case_characters*, *code_snippet_length*|
 
-Features of group **A** are related to user’s profile and participation activities in the community, whereas features of group **B** are based on contributions to the community in the form of votes, answers, etc.  Group **C** contains features related to question content, and group **D** features describe the textual style of the question title and body. Most of the features are self-describing, although some of them require further explanation:
+Features of group **A** are related to user’s profile and participation activities in the community, whereas features of group **B** are based on contributions to the community in the form of votes, answers, etc.  Group **C** contains features related to question content, and features of group **D** describe the textual style of the question title and body. Most of the features are self-describing, although some of them require further explanation:
 
 * **Badge score**
 
  Let {b1 , … , bn} be the badges earned by the user. Then:
 
-  ![equation](http://www.sciweavers.org/tex2img.php?eq=badgeScore%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20%20%20%5Cfrac%7B1%7D%7BnumOfUsersWhoHave%20b_i%7D%20%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+  ![equation](https://latex.codecogs.com/gif.latex?badgeScore%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20%5Cfrac%7B1%7D%7BnumOfUsersWhoOwnb_i%7D)
 
 * **Post score**
 
   Let {q1 , … , qn} be the set of questions asked by the user, and {a1 , … , am} the set of answers posted by the user. Then:
 
-  ![equation](http://www.sciweavers.org/tex2img.php?eq=postScore%20%3D%20%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20score%28q_i%29%20%20%2B%20%20%5Csum_%7Bj%3D1%7D%5E%7Bm%7D%20score%28a_j%29%20%20%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+  ![equation](https://latex.codecogs.com/gif.latex?postScore%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dscore%28q_i%29%20&plus;%20%5Csum_%7Bj%3D1%7D%5E%7Bm%7Dscore%28a_j%29)
 
 * **Comment score**
 
   Let {c1 , … , cn} be the comments posted by the user. Then:
 
-  ![equation](http://www.sciweavers.org/tex2img.php?eq=%20commentScore%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20%20score%28c_i%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+  ![equation](https://latex.codecogs.com/gif.latex?commentScore%3D%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20score%28c_i%29)
 
 * **Accepted answer score**
 
-  Let {a1 , … , am} be the set of answers posted by the user which have been accepted. Each acepted answer gains the score of 15, therefore:
+  Let {a1 , … , am} be the set of answers posted by the user which have been accepted. Each acepted answer has the score of 15, therefore:
 
-  ![equation](http://www.sciweavers.org/tex2img.php?eq=acceptedAnswerScore%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%2015&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0)
+  ![equation](https://latex.codecogs.com/gif.latex?acceptedAnswerScore%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%2015)
 
 The following api methods were used to collect the necessary data:
 
@@ -77,27 +77,27 @@ The following api methods were used to collect the necessary data:
 * [/users/{ids}/answers](http://api.stackexchange.com/docs/answers-on-users) – returns the answers that the requested user posted
 * [/users/{ids}/comments](http://api.stackexchange.com/docs/comments-on-users) – returns the comments that the requested user posted
 
-After adding the features, the questions were saved to files closedQuestionsWithFeatures.json and notClosedQuestionsWithFeatures.json.
+After adding the features, the questions were saved to files [closedQuestionsWithFeatures.json](https://github.com/acilim/StackExchangePredicativeModel/blob/master/data/closedQuestionsWithFeatures.json) and [notClosedQuestionsWithFeatures.json](https://github.com/acilim/StackExchangePredicativeModel/blob/master/data/notClosedQuestionsWithFeatures.json).
 
 
 3. Creating the dataset
 =====================
 
-The next step included creating the dataset from collected questions. The dataset contains 18 attributes: 17 are numeric (the features), and the 18th is the class attribute with possible values *closed* or *not_closed*, the one whose value the program should be able to predict. The dataset was saved to file dataSet.arff, and later divided into two datasets – one for training, with 80% of data (trainingSet.arff), and the other for testing, with 20% of  data (testSet.arff).
+The next step included creating the dataset from collected questions using weka api. The dataset contains 18 attributes: 17 are numeric (the features), and the 18th is the class attribute with possible values *closed* or *not_closed*, the one whose value the program is aimed to predict. The dataset was saved to file [dataSet.arff](https://github.com/acilim/StackExchangePredicativeModel/blob/master/data/dataSet.arff), and later divided into two datasets – one for training, with 80% of data ([trainingSet.arff](https://github.com/acilim/StackExchangePredicativeModel/blob/master/data/trainingSet.arff)), and the other for testing, with 20% of  data ([testSet.arff](https://github.com/acilim/StackExchangePredicativeModel/blob/master/data/testSet.arff)).
 
 
 4. Applying machine learning techniques for classification
 =======================
 
-The dataset was first loaded from the .arff file, and since it contained numeric attributes it needed to be discretized. This was done using the weka Discretize filter. After that the FilteredClassifier was build with Discretize filter and the classifier. Three classifiers were used for classification:
+The dataset was first loaded from the .arff file, and since it contained numeric attributes it needed to be discretized. This was done using the weka [Discretize](http://weka.sourceforge.net/doc.dev/weka/filters/supervised/attribute/Discretize.html) filter. After that the FilteredClassifier was build with Discretize filter and the classifier. Three classifiers were used for classification:
 
-* NaiveBayes
-* Support Vector Machines
-* Logistic Regression
+* [NaiveBayes](http://weka.sourceforge.net/doc.dev/weka/classifiers/bayes/NaiveBayes.html)
+* [Support Vector Machines](http://weka.sourceforge.net/doc.dev/weka/classifiers/functions/SMO.html)
+* [Logistic Regression](http://weka.sourceforge.net/doc.dev/weka/classifiers/functions/Logistic.html)
 
 5. Evaluation of the results
 ====================
-All the clasiffiers were evaluated first on training dataset and later on the test dataset. Their results were as follows:
+All the clasiffiers were evaluated first using the training dataset and later with the test dataset. Their results were as follows:
 
 **Naive Bayes**
 
@@ -144,7 +144,7 @@ Confusion matrix:
 As one can notice, the Logistic Regression classifier had the best results on training data, with 100% correctly classified instances. On the test dataset, Support Vector Machines was the best with 86.5 % corectly classified instances. 
 
 6. Technical realisation
-========================
+=============================
 
 
 The application was written in Java programming language, using Eclipse Juno IDE. The following libraries were used:
@@ -154,10 +154,10 @@ The application was written in Java programming language, using Eclipse Juno IDE
   * [httpclient-4.5] (https://hc.apache.org/downloads.cgi)
  
 7. Acknowledgements 
-===================
+========================
 
 
-The project has been developed as a part of the project assignment for the course [Intelligent Systems](http://is.fon.rs) at the [Faculty of Organization Sciences](http://fon.rs), University of Belgrade, Serbia.
+The project was developed as part of the project assignment for the course [Intelligent Systems](http://is.fon.rs) at the [Faculty of Organization Sciences](http://fon.rs), University of Belgrade, Serbia.
 Ideas and guidelines for the project were found in the work [Fit or Unfit : Analysis and Prediction of ‘Closed Questions’] (http://arxiv.org/abs/1307.7291).
 
 
