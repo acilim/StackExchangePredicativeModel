@@ -5,7 +5,7 @@
 
 The aim of this project was to build a prediction model that would be able to predict whether the question posted on [stackoverflow.com] (http://stackoverflow.com/) was going to be closed or not.
 
-Stackoverflow is is a website where users can ask questions on various topics in computer programming, answer other users’ questions, and earn points and badges by actively participating in the community. To prevent low quality questions stackoverflow has been using a closing questions mechanism since 2013, which allows experience community members to mark a question closed if they estimate it not to be fit for the website. A question can be marked closed for five reasons: 
+Stackoverflow is a website where users can ask questions on various topics in computer programming, answer other users’ questions, and earn points and badges by actively participating in the community. To prevent low quality questions stackoverflow has been using a closing questions mechanism since 2013, which allows experience community members to mark a question closed if they estimate it not to be fit for the website. A question can be marked closed for five reasons: 
 * *duplicate*, 
 * *off-topic*,
 *  *unclear-what-you’re-asking*, 
