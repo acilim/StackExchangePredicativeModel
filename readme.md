@@ -64,7 +64,7 @@ Features of group **A** are related to user’s profile and participation activi
 
 * **Accepted answer score**
 
-  Let {a1 , … , am} be the set of answers posted by the user which have been accepted. Each acepted answer has the score of 15, therefore:
+  Let {a1 , … , an} be the set of answers posted by the user which have been accepted. Each acepted answer has the score of 15, therefore:
 
   ![equation](https://latex.codecogs.com/gif.latex?acceptedAnswerScore%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%2015)
 
