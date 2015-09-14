@@ -1,7 +1,6 @@
 # StackExchangePredicativeModel
 
 ## About the project
-====================
 
 The aim of this project was to build a prediction model that would be able to predict whether the question posted on [stackoverflow.com] (http://stackoverflow.com/) was going to be closed or not.
 
